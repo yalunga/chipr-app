@@ -1,0 +1,123 @@
+.logo {
+  padding-top: 1rem;
+}
+.auth-container {
+  background-color: #FFF;
+  height: 100vh;
+}
+.bd-tabs {
+  margin-bottom: 1rem;
+}
+.is-primary {
+  background-color: #5358E2 !important;
+}
+.height-100 {
+  height: 100%;
+}
+.width-100 {
+  width: 100%;
+}
+.height-80vh {
+  height: 80vh;
+}
+.height-90vh {
+  height: 90vh;
+}
+.min-height-100vh {
+  min-height: 100vh;
+}
+.mt1 {
+  margin-top: 1rem;
+}
+.p-sm {
+  padding: 0.5rem;
+}
+.p-t-0 {
+  padding-top: 0;
+}
+.navbar-burger {
+  margin-left: 0;
+}
+.absolute {
+  position: absolute;
+}
+.z-2 {
+  z-index: 2;
+}
+.background-light-grey {
+  background-color: #F5F7FB;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+}
+.rbc-month-view {
+  height: auto !important;
+  max-height: 100% !important;
+}
+.mb-sm {
+  margin-bottom: 1.5rem;
+}
+.ml-sm {
+  margin-left: 1.5rem;
+}
+.mr-sm {
+  margin-right: 1.5rem;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.m-t-n {
+  margin-top: -1.5rem;
+}
+.p-l-1 {
+ padding-left: 1.5rem;
+}
+.circle {
+  border-radius: 50%;
+}
+.raised {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 
+              0 1px 5px 0 rgba(0, 0, 0, 0.12), 
+              0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  z-index: 30;
+}
+.customDatePickerWidth, 
+.customDatePickerWidth > div.react-datepicker, 
+.customDatePickerWidth > div > div.react-datepicker__month-container{
+   width: 100%;
+   height: 100%;
+}
+.rbc-time-content {
+  visibility: hidden !important;
+}
+.rbc-time-header-content {
+  height: 100%;
+}
+.rbc-time-header-gutter {
+  width: 0px !important;
+  min-width: 0px !important;
+  padding: 0 !important;
+}
+.rbc-time-header {
+  height: 100%;
+}
+.rbc-row-content {
+  max-height: 100%;
+  overflow-y: scroll;
+}
+.day-event {
+  border-radius: 0 !important;
+}
+.event {
+  border-left-width: 5px !important;
+  border-top-width: 0px !important;
+  border-right-width: 0px !important;
+  border-bottom-width: 0px !important;
+  border-style: solid !important;
+}
+.break-word {
+  white-space: pre-wrap;
+}
