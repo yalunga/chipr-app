@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Cookies from 'js-cookie';
 import { login } from '../../utils/APIHelper';
 
 export default class Login extends React.Component {
@@ -14,13 +15,14 @@ export default class Login extends React.Component {
       isGym: false
     };
     this.handleSwitch = this.handleSwitch.bind(this);
-    this.onLoginRedirectUrl = '/admin/dashboard';
+    this.onLoginRedirectUrl = '/athlete';
   }
 
   componentDidMount() {
-    const isLoggedIn = localStorage.getItem('token');
-    const isAdmin = localStorage.getItem('admin');
+    const isLoggedIn = Cookies.get('token');
+    const isAdmin = Cookies.get('admin');
     if (isAdmin) {
+      console.log(isAdmin);
       this.onLoginRedirectUrl = '/admin/dashboard';
     }
     if (isLoggedIn) {
@@ -43,12 +45,12 @@ export default class Login extends React.Component {
     try {
       const result = await login(email, password, this.state.isGym);
       if (result.data) {
-        localStorage.setItem('token', result.data.token);
+        Cookies.set('token', result.data.token);
         if (this.state.isGym) {
-          localStorage.setItem('admin', true);
+          Cookies.set('admin', true);
           this.onLoginRedirectUrl = '/admin/dashboard';
         } else {
-          localStorage.setItem('admin', false);
+          Cookies.remove('admin');
           this.onLoginRedirectUrl = '/athlete';
         }
         this.setState({ loggedIn: true });

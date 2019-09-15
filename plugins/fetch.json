@@ -1,0 +1,38 @@
+{
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-android-permissions": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-android-permissions@^1.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "com.subitolabs.android.cordova.galleryapi": {
+    "source": {
+      "type": "registry",
+      "id": "git+https://github.com/Collaborne/cordova-gallery-api.git"
+    },
+    "is_top_level": true,
+    "variables": {
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": " "
+    }
+  },
+  "cordova-plugin-image-picker": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-image-picker"
+    },
+    "is_top_level": true,
+    "variables": {
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "Select User's Profile Image"
+    }
+  }
+}

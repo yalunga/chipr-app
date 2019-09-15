@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Cookies from 'js-cookie';
 import { registerAthlete, registerGym } from '../../utils/APIHelper';
 
 export default class Register extends React.Component {
@@ -11,6 +12,7 @@ export default class Register extends React.Component {
       loggedIn: false,
       error: '',
       errorMsg: '',
+      gender: '',
       isGym: false
     };
     this.handleSwitch = this.handleSwitch.bind(this);
@@ -20,8 +22,8 @@ export default class Register extends React.Component {
   }
 
   componentDidMount() {
-    const isLoggedIn = localStorage.getItem('token');
-    const isAdmin = localStorage.getItem('admin');
+    const isLoggedIn = Cookies.get('token');
+    const isAdmin = Cookies.get('admin');
     if (isAdmin) {
       this.onLoginRedirectUrl = '/admin/dashboard';
     }
@@ -45,6 +47,7 @@ export default class Register extends React.Component {
     const password = signUpData.get('password');
     const confirmPassword = signUpData.get('confirmPassword');
     const gymName = signUpData.get('gymName');
+    const gender = this.state.gender;
     if (!name) {
       this.setState({
         error: 'name',
@@ -87,21 +90,28 @@ export default class Register extends React.Component {
       })
       return;
     }
+    if (!this.state.isGym && !gender) {
+      this.setState({
+        error: 'gender',
+        errorMsg: 'Gender is required.'
+      });
+      return
+    }
     try {
       let result;
       if (this.state.isGym) {
         result = await registerGym(name, gymName, email, password)
       } else {
-        result = await registerAthlete(name, email, password);
+        result = await registerAthlete(name, email, password, gender);
       }
       if (result.data) {
-        localStorage.setItem('token', result.data.token);
+        Cookies.set('token', result.data.token);
         if (this.state.isGym) {
-          localStorage.setItem('admin', true);
+          Cookies.set('admin', true);
           this.onLoginRedirectUrl = '/admin/dashboard';
         } else {
           this.onLoginRedirectUrl = '/athlete';
-          localStorage.setItem('admin', false);
+          Cookies.set('admin', false);
         }
         this.setState({ loggedIn: true });
       }
@@ -130,7 +140,8 @@ export default class Register extends React.Component {
       error,
       errorMsg,
       loaded,
-      isGym
+      isGym,
+      gender
     } = this.state;
     if (!loaded) return null;
     if (loggedIn) {
@@ -246,6 +257,32 @@ export default class Register extends React.Component {
                     </div>
                   </label>
                 </div>
+                {!isGym && (
+                  <div style={{ marginBottom: '2rem' }}>
+                    <div className="box columns is-mobile p-0" style={{ marginTop: '1rem' }}>
+                      <div
+                        className={gender === 'male' ? "column has-text-centered has-background-light" : "column has-text-centered"}
+                        style={{ borderRight: '1px lightgray solid', borderTopLeftRadius: 6, borderBottomLeftRadius: 6 }}
+                        onClick={() => {
+                          this.clearErrors();
+                          this.setState({ gender: 'male' })
+                        }}
+                      >
+                        <span>Male</span>
+                      </div>
+                      <div
+                        className={gender === 'female' ? "column has-text-centered has-background-light" : "column has-text-centered"}
+                        style={{ borderTopRightRadius: 6, borderBottomRightRadius: 6 }}
+                        onClick={() => {
+                          this.clearErrors();
+                          this.setState({ gender: 'female' })
+                        }}
+                      >
+                        <span>Female</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <div className="field is-grouped">
                   <div className="control width-100">
                     <button type="submit" className="button is-primary is-fullwidth is-rounded is-medium">

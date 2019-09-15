@@ -1,83 +1,71 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import MobileNav from './mobile-nav';
+import { Link, withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default class GuestLayout extends React.PureComponent {
+class GuestLayout extends React.PureComponent {
   constructor() {
     super();
-    this.state = {
-      showMenu: false
-    };
+    document.body.classList.add('min-height-100vh');
+    this.goBack = this.goBack.bind(this);
   }
+
+  goBack() {
+    this.props.history.goBack()
+  }
+
   render() {
     // eslint-disable-next-line
-    const { children, page } = this.props;
+    const { children, page, showBackArrow, paddingBottom } = this.props;
     return (
-      <div className="background-light-grey min-height-100vh">
-        <nav className="navbar box is-paddingless" role="navigation" aria-label="main navigation">
+      <div className="background-white">
+        <nav className="navbar box is-paddingless is-fixed-top" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={() => this.setState({ showMenu: true })}>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+            {showBackArrow && (
+              <p className="navbar-item" style={{ marginLeft: '1rem' }} onClick={this.goBack}>
+                <FontAwesomeIcon icon="arrow-left" />
+              </p>
+            )}
             <p className="navbar-item has-text-centered">
-              Chipr
+              onewod
             </p>
           </div>
-          {this.state.showMenu && (
-            <MobileNav hideNav={() => this.setState({ showMenu: false })} page={page} />
-          )}
         </nav>
-        <div className="columns height-90vh width-100">
-          <div className="column p-l-md is-2 is-hidden-touch box">
-            <aside className="menu">
-              <p className="menu-label">
-                General
-            </p>
-              <ul className="menu-list">
-                <li>
-                  <Link to="/admin/dashboard">
-                    <a className={page === 'dashboard' ? 'is-active' : ''}>
-                      Dashboard
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin/wods">
-                    <a className={page === 'wods' ? 'is-active' : ''}>
-                      WODs
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin/wods">
-                    <a className={page === 'athletes' ? 'is-active' : ''}>
-                      Athletes
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-              <ul className="menu-list">
-                <li>
-                  <Link to="/logout">
-                    Logout
-                  </Link>
-                </li>
-              </ul>
-            </aside>
-          </div>
-          <div className="column width-100">
-            <div className="columns p-l-1 height-100">
-              <main className="column box">
-                <div>
-                  {children}
-                </div>
-              </main>
+        {!showBackArrow && (
+          <nav className="navbar box is-fixed-bottom is-marginless is-hidden-desktop" role="navigation" aria-label="main navigation">
+            <div className="columns is-mobile height-100">
+              <div className="column has-text-centered">
+                <Link to="/athlete" className="has-text-grey-light">
+                  <div className="background-light-purple br-4">
+                    <span className="heading has-text-centered">Pro</span>
+                  </div>
+                </Link>
+              </div>
+              <div className="column has-text-centered">
+                <Link to="/athlete" className={page === "athlete" ? "has-text-primary nav-selected" : "has-text-grey-light"}>
+                  <FontAwesomeIcon icon="dumbbell" />
+                </Link>
+              </div>
+              <div className="column has-text-centered">
+                <Link to="/athlete/settings" className={page === "settings" ? "has-text-primary nav-selected" : "has-text-grey-light"}>
+                  <FontAwesomeIcon icon="user" />
+                </Link>
+              </div>
+            </div>
+          </nav>
+        )}
+        <div className="columns width-100 is-marginless height-100">
+          <div className="column height-100" style={{
+            paddingBottom: (!showBackArrow || paddingBottom) ? '4rem' : '0rem',
+            paddingTop: '4rem'
+          }}>
+            <div style={{ height: '100%', overflowY: 'auto', overflowX: 'hidden', padding: '1rem' }}>
+              {children}
             </div>
           </div>
         </div>
       </div >
     );
   }
-}
+};
+
+export default withRouter(GuestLayout);

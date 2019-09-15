@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export default class Protected extends React.Component {
   redirectUrl = '/login';
@@ -13,8 +14,8 @@ export default class Protected extends React.Component {
   }
 
   componentDidMount() {
-    const isLoggedIn = localStorage.getItem('token');
-    const isAdmin = localStorage.getItem('admin');
+    const isLoggedIn = Cookies.get('token');
+    const isAdmin = Cookies.get('admin');
     if (!isLoggedIn || !isAdmin) {
       this.setState({
         initialized: true,

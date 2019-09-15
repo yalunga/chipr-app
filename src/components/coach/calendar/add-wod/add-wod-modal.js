@@ -11,7 +11,8 @@ export default class AddWodModal extends Component {
       title: '',
       scoreType: '0',
       description: '',
-      date: ''
+      date: '',
+      sets: 1
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleDateSelect = this.handleDateSelect.bind(this);
@@ -28,7 +29,8 @@ export default class AddWodModal extends Component {
         title: selectedWorkout.title,
         scoreType: selectedWorkout.score_type,
         description: selectedWorkout.description,
-        date: new Date(selectedWorkout.date)
+        date: new Date(selectedWorkout.date),
+        sets: selectedWorkout.sets ? selectedWorkout.sets : 1
       });
     }
   }
@@ -40,14 +42,14 @@ export default class AddWodModal extends Component {
     this.setState({ date: e });
   }
   async handleSave() {
-    const { title, scoreType, description, date } = this.state;
+    const { title, scoreType, description, date, sets } = this.state;
     const { selectedWorkout } = this.props;
     if (!title || scoreType === 0 || !description || !date) {
       return;
     }
     try {
       const id = selectedWorkout ? selectedWorkout._id : null;
-      const { data } = await addOrEditWorkout(title, scoreType, description, date, id);
+      const { data } = await addOrEditWorkout(title, scoreType, description, date, id, sets);
       if (data) {
         if (data.ok) {
           this.setState({
@@ -117,7 +119,7 @@ export default class AddWodModal extends Component {
                       placeholder="Title"
                       value={this.state.title}
                       onChange={this.handleChange}
-                      maxLength={50}
+                      maxLength={20}
                     />
                     <span className="icon is-small is-left">
                       <FontAwesomeIcon icon="dumbbell" />
@@ -137,6 +139,23 @@ export default class AddWodModal extends Component {
                 </div>
               </div>
             </div>
+            {this.state.scoreType === 3 && (
+              <div className="field">
+                <label className="label has-text-weight-medium">Number of sets</label>
+                <div className="control">
+                  <input
+                    name="sets"
+                    className="input"
+                    type="number"
+                    placeholder="# of sets"
+                    value={this.state.sets}
+                    onChange={this.handleChange}
+                    min="1"
+                    max="10"
+                  />
+                </div>
+              </div>
+            )}
             <div className="field is-horizontal">
               <div className="field-body">
                 <div className="field">

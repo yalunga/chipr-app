@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export default class Logout extends React.Component {
   onLogoutRedirectUrl = '/login';
@@ -12,7 +13,7 @@ export default class Logout extends React.Component {
   }
 
   componentDidMount() {
-    localStorage.setItem('token', '');
+    Cookies.set('token', '');
     this.setState({
       logout: true,
     });

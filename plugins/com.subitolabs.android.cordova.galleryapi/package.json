@@ -1,0 +1,54 @@
+{
+  "_from": "git+https://github.com/Collaborne/cordova-gallery-api.git",
+  "_id": "com.subitolabs.android.cordova.galleryapi@0.2.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/com.subitolabs.android.cordova.galleryapi",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/Collaborne/cordova-gallery-api.git",
+    "rawSpec": "git+https://github.com/Collaborne/cordova-gallery-api.git",
+    "saveSpec": "git+https://github.com/Collaborne/cordova-gallery-api.git",
+    "fetchSpec": "https://github.com/Collaborne/cordova-gallery-api.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/Collaborne/cordova-gallery-api.git#6792c2a8e3f94501e62d0ab1f9c155d787592233",
+  "_spec": "git+https://github.com/Collaborne/cordova-gallery-api.git",
+  "_where": "/Users/andyyalung/chipr/chipr-app2",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Collaborne/cordova-gallery-api/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "com.subitolabs.android.cordova.galleryapi",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova gallery API plugin",
+  "homepage": "https://github.com/Collaborne/cordova-gallery-api#readme",
+  "keywords": [
+    "cordova",
+    "gallery",
+    "media",
+    "api",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "com.subitolabs.android.cordova.galleryapi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Collaborne/cordova-gallery-api.git"
+  },
+  "version": "0.2.0"
+}

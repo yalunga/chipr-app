@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com.subitolabs.android.cordova.galleryapi": {
+      "PACKAGE_NAME": "com.example.sample"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.example.sample"
+    },
+    "cordova-plugin-image-picker": {
+      "PACKAGE_NAME": "com.example.sample"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.example.sample"
+    }
+  },
+  "dependent_plugins": {}
+}

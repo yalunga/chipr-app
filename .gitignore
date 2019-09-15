@@ -5,11 +5,15 @@
 /.pnp
 .pnp.js
 
+#cordova
+/platforms
+
 # testing
 /coverage
 
 # production
 /build
+/www
 
 # misc
 .DS_Store

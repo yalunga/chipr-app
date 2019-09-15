@@ -105,25 +105,25 @@ export default class Calendar extends Component {
     if (workout.score_type === 1) {
       style = {
         backgroundColor: '#EEEEFE',
-        color: 'black',
+        color: '#968AFE',
         borderColor: '#968AFE'
       };
     } else if (workout.score_type === 2) {
       style = {
         backgroundColor: '#FFF2F2',
-        color: 'black',
+        color: '#F17777',
         borderColor: '#F17777'
       }
     } else if (workout.score_type === 3) {
       style = {
         backgroundColor: '#E5F8F8',
-        color: 'black',
+        color: '#2CC8D7',
         borderColor: '#2CC8D7'
       }
     } else if (workout.score_type === 4) {
       style = {
         backgroundColor: '#FCF0E4',
-        color: 'black',
+        color: '#F49F42',
         borderColor: '#F49F42'
       }
     }
