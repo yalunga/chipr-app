@@ -64,7 +64,7 @@
     "react-avatar": "^3.6.0",
     "react-big-calendar": "^0.22.0",
     "react-datepicker": "^2.8.0",
-    "react-dev-utils": "^9.0.3",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.9.0",
     "react-onclickoutside": "^6.9.0",
     "react-router-dom": "^5.0.1",
